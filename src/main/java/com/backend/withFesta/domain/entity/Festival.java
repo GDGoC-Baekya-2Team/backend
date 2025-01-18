@@ -1,4 +1,5 @@
 package com.backend.withFesta.domain.entity;
+
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -30,5 +31,16 @@ public class Festival {
     private LocalDate fstvlStart; //축제 시작
     @Column(name = "fstvl_end")
     private LocalDate fstvlEnd; //축제 종료
+
+    @OneToMany(mappedBy = "posts", fetch = FetchType.EAGER, cascade = CascadeType.REMOVE)
+    private List<Recruit> recruits;
+
+    public void update(String fstvlName,String number,String location,String mnnstNm,String rdnmadr){
+        this.fstvlName=fstvlName;
+        this.number=number;
+        this.location=location;
+        this.mnnstNm=mnnstNm;
+        this.rdnmadr=rdnmadr;
+    }
 
 }
