@@ -1,4 +1,4 @@
-package com.backend.withFesta.domain;
+package com.backend.withFesta.domain.entity;
 
 
 import jakarta.persistence.Entity;
