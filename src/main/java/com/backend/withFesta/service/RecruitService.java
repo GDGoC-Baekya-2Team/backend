@@ -4,8 +4,11 @@ import com.backend.withFesta.domain.dto.RecruitResponseDto;
 import com.backend.withFesta.domain.entity.Recruit;
 import com.backend.withFesta.repository.RecruitRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.GetMapping;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -40,4 +43,16 @@ public class RecruitService {
         recruitRepository.save(recruit);
         return recruit.getRecruitId();
     }
+
+    @Transactional(readOnly = true)
+    public Page<Recruit> pageLists(Pageable pageable){
+        return recruitRepository.findAll(pageable);
+    }
+
+    @Transactional(readOnly = true)
+    public Page<Recruit> search(String keyword, Pageable pageable){
+        Page<Recruit> recruits=recruitRepository.findByKeywordContaining(keyword, pageable);
+        return recruits;
+    }
+
 }
