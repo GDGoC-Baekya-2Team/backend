@@ -3,18 +3,21 @@ package com.backend.withFesta.service;
 import com.backend.withFesta.domain.Festival;
 import com.backend.withFesta.repository.FestivalRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
-
-import java.util.List;
 
 @Service
 @RequiredArgsConstructor
 public class FestivalService {
     private FestivalRepository festivalRepository;
 
-    @Transactional
-    public List<Festival> search(String keyword){
-        return festivalRepository.findByContaining(keyword);
+    public Page<Festival> searchTitle(String keyword, Pageable pageable){
+        return festivalRepository.findByTitleContaining(keyword, pageable);
+    }
+
+    public Festival FindByFestivalId(Long id){
+        return festivalRepository.findById(id)
+                .orElse(null);
     }
 }
