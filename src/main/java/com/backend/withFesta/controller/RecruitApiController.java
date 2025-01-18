@@ -1,5 +1,7 @@
 package com.backend.withFesta.controller;
 
+import com.backend.withFesta.common.response.ApiResponse;
+import com.backend.withFesta.common.status.SuccessStatus;
 import com.backend.withFesta.domain.dto.RecruitRequestDto;
 import com.backend.withFesta.domain.dto.RecruitResponseDto;
 import com.backend.withFesta.service.RecruitService;
@@ -18,22 +20,22 @@ public class RecruitApiController {
 
     // 특정 구인글 조회 (GET /api/recruits/{recruitId})
     @GetMapping("/{recruitId}")
-    public ResponseEntity<RecruitResponseDto> getRecruitById(@PathVariable Long recruitId) {
+    public ResponseEntity<ApiResponse<RecruitResponseDto>> getRecruitById(@PathVariable Long recruitId) {
         RecruitResponseDto recruit = recruitService.findById(recruitId);
-        return ResponseEntity.ok(recruit);
+        return ApiResponse.success(SuccessStatus.OK, recruit);
     }
 
     // 전체 구인글 조회 (GET /api/recruits)
     @GetMapping
-    public ResponseEntity<List<RecruitResponseDto>> getAllRecruits() {
+    public ResponseEntity<ApiResponse<List<RecruitResponseDto>>> getAllRecruits() {
         List<RecruitResponseDto> recruits = recruitService.findAll();
-        return ResponseEntity.ok(recruits);
+        return ApiResponse.success(SuccessStatus.OK, recruits);
     }
 
     // 구인글 생성 (POST /api/recruits)
     @PostMapping
-    public ResponseEntity<Long> createRecruit(@RequestBody RecruitRequestDto recruitRequestDto) {
+    public ResponseEntity<ApiResponse<Long>> createRecruit(@RequestBody RecruitRequestDto recruitRequestDto) {
         Long recruitId = recruitService.save(recruitRequestDto);
-        return ResponseEntity.ok(recruitId);
+        return ApiResponse.success(SuccessStatus.CREATED, recruitId);
     }
 }
