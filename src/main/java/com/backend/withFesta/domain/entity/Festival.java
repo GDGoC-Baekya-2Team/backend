@@ -6,36 +6,33 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import java.time.LocalDateTime;
-import java.util.List;
+import java.time.LocalDate;
 
-@NoArgsConstructor
 @AllArgsConstructor
-@Getter
 @Builder
+@NoArgsConstructor
+@Getter
 @Entity
 public class Festival {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    @Column(nullable = false)
-    private String fstvlName;
-    @Column(name = "fstvlStart_date", nullable = false)
-    private LocalDateTime fstvlStart;
-    @Column(nullable = false)
-    private String number;
-    @Column(nullable = false)
-    private String location;
-    @Column(nullable = false)
-    private String mnnstNm; // 주관기관명
-    @Column(nullable = false)
-    private String rdnmadr; // 도로명주소
-    @Column(name = "fstvlStart_date", nullable = false)
-    private LocalDateTime fstvlEnd;
+    @Column(name = "fstvl_name")
+    private String fstvlName; //축제명
+    @Column(name = "location")
+    private String location; //개최장소
+    @Column(name = "number")
+    private String number; //전화번호
+    @Column(name = "mnnst_nm")
+    private String mnnstNm; //주관기관명
+    @Column(name = "rdnmadr")
+    private String rdnmadr; //도로명주소
+    @Column(name = "fstvl_start")
+    private LocalDate fstvlStart; //축제 시작
+    @Column(name = "fstvl_end")
+    private LocalDate fstvlEnd; //축제 종료
 
     @OneToMany(mappedBy = "posts", fetch = FetchType.EAGER, cascade = CascadeType.REMOVE)
-
     private List<Recruit> recruits;
 
     public void update(String fstvlName,String number,String location,String mnnstNm,String rdnmadr){
@@ -45,4 +42,5 @@ public class Festival {
         this.mnnstNm=mnnstNm;
         this.rdnmadr=rdnmadr;
     }
+
 }
