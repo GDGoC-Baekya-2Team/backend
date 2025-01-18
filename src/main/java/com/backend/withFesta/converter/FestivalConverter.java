@@ -6,6 +6,7 @@ import com.backend.withFesta.domain.entity.Festival;
 public class FestivalConverter {
     public static FestivalDto.searchDto toSearchDto(Festival festival) {
         return FestivalDto.searchDto.builder()
+                .fstvlId(festival.getFestivalId())
                 .fstvlName(festival.getFstvlName())
                 .locatioin(festival.getLocation())
                 .fstvlEnd(festival.getFstvlEnd().toString())

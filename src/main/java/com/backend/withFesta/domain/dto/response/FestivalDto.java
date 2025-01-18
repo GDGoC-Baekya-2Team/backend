@@ -10,6 +10,7 @@ public class FestivalDto {
     @Data @Builder
     @AllArgsConstructor
     public static class searchDto {
+        private Long fstvlId;
         private String fstvlName;
         private String locatioin;
         private String mnnstNm;
