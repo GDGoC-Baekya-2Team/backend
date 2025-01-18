@@ -25,7 +25,7 @@ public class RecruitDto {
         /*Dto to Entity*/
         public Recruit toEntity(){
             Recruit recruit = Recruit.builder()
-                    .id(id)
+                    .recruitId(id)
                     .pay(pay)
                     .job(job)
                     .days(days)
@@ -34,7 +34,6 @@ public class RecruitDto {
                     .build();
             return recruit;
         }
-
     }
 
     @Getter
@@ -48,7 +47,7 @@ public class RecruitDto {
 
         // Entity to DTo
         public Response(Recruit recruit){
-            this.id=recruit.getId();
+            this.id=recruit.getRecruitId();
             this.pay=recruit.getPay();
             this.job=recruit.getJob();
             this.days=recruit.getDays();

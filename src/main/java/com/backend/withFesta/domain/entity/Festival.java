@@ -17,7 +17,7 @@ import java.util.List;
 public class Festival {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long festivalId;
     @Column(name = "fstvl_name")
     private String fstvlName; //축제명
     @Column(name = "location")
@@ -33,7 +33,7 @@ public class Festival {
     @Column(name = "fstvl_end")
     private LocalDate fstvlEnd; //축제 종료
 
-    @OneToMany(mappedBy = "posts", fetch = FetchType.EAGER, cascade = CascadeType.REMOVE)
+    @OneToMany(mappedBy = "festival", fetch = FetchType.EAGER, cascade = CascadeType.REMOVE)
     private List<Recruit> recruits;
 
     public void update(String fstvlName,String number,String location,String mnnstNm,String rdnmadr){

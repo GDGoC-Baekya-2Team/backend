@@ -28,7 +28,7 @@ public class UserDto {
 
         public User toEntity(){
             User user=User.builder()
-                    .id(id)
+                    .userId(id)
                     .username(username)
                     .email(email)
                     .build();
@@ -44,7 +44,7 @@ public class UserDto {
         private final String email;
 
         public Response(User user){
-            this.id = user.getId();
+            this.id = user.getUserId();
             this.username = user.getUsername();
             this.email = user.getEmail();
         }
