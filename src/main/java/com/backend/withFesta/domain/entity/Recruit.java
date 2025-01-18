@@ -7,6 +7,7 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -26,9 +27,12 @@ public class Recruit extends BaseEntity {
     @Column(nullable = false)
     private String job;
     @Column(nullable = false)
-    private LocalDateTime days;
+    private LocalDate days;
     @Column(nullable = false,columnDefinition = "TEXT")
     private String description;
+
+    @Column(nullable = false)
+    private int numOfRecruits;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="user_id")

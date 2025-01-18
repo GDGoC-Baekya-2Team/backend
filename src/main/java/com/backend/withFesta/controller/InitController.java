@@ -17,7 +17,7 @@ public class InitController {
 
     @GetMapping("/init")
     public ResponseEntity<ApiResponse<String>> init() {
-        initUtil.init();
+//        initUtil.init();
         return ApiResponse.success(SuccessStatus.OK);
     }
 }
