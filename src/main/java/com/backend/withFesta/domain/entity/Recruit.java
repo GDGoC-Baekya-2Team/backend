@@ -1,4 +1,4 @@
-package com.backend.withFesta.domain;
+package com.backend.withFesta.domain.entity;
 
 
 import jakarta.persistence.*;
@@ -7,6 +7,7 @@ import lombok.Builder;
 import lombok.RequiredArgsConstructor;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Builder
 @RequiredArgsConstructor
@@ -30,6 +31,10 @@ public class Recruit extends BaseEntity {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="user_id")
     private User user;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name="festival_id")
+    private Festival festival;
 
     public void update(String pay,String job,String description){
         this.pay = pay;

@@ -1,4 +1,4 @@
-package com.backend.withFesta.domain;
+package com.backend.withFesta.domain.entity;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -7,6 +7,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -33,9 +34,9 @@ public class Festival {
     @Column(name = "fstvlStart_date", nullable = false)
     private LocalDateTime fstvlEnd;
 
-    @ManyToOne(fetch=FetchType.LAZY)
-    @JoinColumn(name="recruit_id")
-    private Recruit recruit;
+    @OneToMany(mappedBy = "posts", fetch = FetchType.EAGER, cascade = CascadeType.REMOVE)
+
+    private List<Recruit> recruits;
 
     public void update(String fstvlName,String number,String location,String mnnstNm,String rdnmadr){
         this.fstvlName=fstvlName;
