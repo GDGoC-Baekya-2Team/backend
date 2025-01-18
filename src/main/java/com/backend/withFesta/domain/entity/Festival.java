@@ -32,16 +32,10 @@ public class Festival extends BaseEntity {
     private LocalDate fstvlStart; //축제 시작
     @Column(name = "fstvl_end")
     private LocalDate fstvlEnd; //축제 종료
+    @Column(name = "image_url", length = 500)
+    private String imageUrl;
 
     @OneToMany(mappedBy = "festival", fetch = FetchType.EAGER, cascade = CascadeType.REMOVE)
     private List<Recruit> recruits;
-
-    public void update(String fstvlName,String number,String location,String mnnstNm,String rdnmadr){
-        this.fstvlName=fstvlName;
-        this.number=number;
-        this.location=location;
-        this.mnnstNm=mnnstNm;
-        this.rdnmadr=rdnmadr;
-    }
 
 }

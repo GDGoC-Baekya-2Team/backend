@@ -14,7 +14,9 @@ public class FestivalDto {
         private String fstvlName;
         private String locatioin;
         private String mnnstNm;
+        private String rdnmadr;
         private String fstvlStart;
         private String fstvlEnd;
+        private String imageUrl;
     }
 }

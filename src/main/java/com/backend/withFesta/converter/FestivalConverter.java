@@ -9,9 +9,11 @@ public class FestivalConverter {
                 .fstvlId(festival.getFestivalId())
                 .fstvlName(festival.getFstvlName())
                 .locatioin(festival.getLocation())
+                .rdnmadr(festival.getRdnmadr())
                 .fstvlEnd(festival.getFstvlEnd().toString())
                 .fstvlStart(festival.getFstvlStart().toString())
                 .mnnstNm(festival.getMnnstNm())
+                .imageUrl(festival.getImageUrl())
                 .build();
     }
 }
