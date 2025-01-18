@@ -1,23 +1,24 @@
 package com.backend.withFesta.service;
 
+import com.backend.withFesta.converter.FestivalConverter;
+import com.backend.withFesta.domain.dto.response.FestivalDto;
 import com.backend.withFesta.domain.entity.Festival;
 import com.backend.withFesta.repository.FestivalRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
+
 
 @Service
 @RequiredArgsConstructor
 public class FestivalService {
-    private FestivalRepository festivalRepository;
+    private final FestivalRepository festivalRepository;
 
-//    public Page<Festival> searchTitle(String keyword, Pageable pageable){
-//        return festivalRepository.findByTitleContaining(keyword, pageable);
-//    }
-
-    public Festival FindByFestivalId(Long id){
-        return festivalRepository.findById(id)
-                .orElse(null);
+    public List<FestivalDto.searchDto> search(String name) {
+        List<Festival> festivalPage = festivalRepository.findFestivalsByFstvlName(name);
+        return festivalPage.stream()
+                .map(FestivalConverter::toSearchDto)
+                .toList();
     }
 }
