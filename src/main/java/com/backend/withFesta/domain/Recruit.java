@@ -20,5 +20,5 @@ public class Recruit {
     private Long id;
 
     private String pay;
-    private
+
 }
