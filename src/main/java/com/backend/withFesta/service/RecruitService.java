@@ -49,10 +49,4 @@ public class RecruitService {
         return recruitRepository.findAll(pageable);
     }
 
-    @Transactional(readOnly = true)
-    public Page<Recruit> search(String keyword, Pageable pageable){
-        Page<Recruit> recruits=recruitRepository.findByKeywordContaining(keyword, pageable);
-        return recruits;
-    }
-
 }
