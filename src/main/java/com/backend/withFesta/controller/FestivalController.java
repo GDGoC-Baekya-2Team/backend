@@ -1,6 +1,6 @@
 package com.backend.withFesta.controller;
 
-import com.backend.withFesta.domain.Festival;
+import com.backend.withFesta.domain.entity.Festival;
 import com.backend.withFesta.service.FestivalService;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
@@ -18,13 +18,13 @@ import org.springframework.web.bind.annotation.RestController;
 public class FestivalController {
     private final FestivalService festivalService;
 
-    @GetMapping("/search") //타이틀로 검색
-    public Page<Festival> search(String keyword, int page, int size){
-        Pageable pageable = PageRequest.of(page, size);
-        Page<Festival> festivals = festivalService.searchTitle(keyword, pageable);
-        return ResponseEntity.ok(festivals);
-    }
-
-    @GetMapping("{id}")
-    public ResponseEntity<Festival> FindByFestivalId ()
+//    @GetMapping("/search") //타이틀로 검색
+//    public Page<Festival> search(String keyword, int page, int size){
+//        Pageable pageable = PageRequest.of(page, size);
+//        Page<Festival> festivals = festivalService.searchTitle(keyword, pageable);
+//        return ResponseEntity.ok(festivals);
+//    }
+//
+//    @GetMapping("{id}")
+//    public ResponseEntity<Festival> FindByFestivalId ()
 }
