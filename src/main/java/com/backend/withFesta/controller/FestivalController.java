@@ -28,4 +28,11 @@ public class FestivalController {
         return ApiResponse.success(SuccessStatus.OK, response);
     }
 
+    @GetMapping("")
+    public ResponseEntity<ApiResponse<List<FestivalDto.searchDto>>> home(
+    ){
+        List<FestivalDto.searchDto> response = festivalService.getRecentFestivals();
+        return ApiResponse.success(SuccessStatus.OK, response);
+    }
+
 }
